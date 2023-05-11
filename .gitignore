@@ -1,0 +1,9 @@
+.env
+.env.backup
+.env.production
+
+/.fleet
+/.idea
+/.vscode
+
+/certs/*
