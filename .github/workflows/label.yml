@@ -12,11 +12,10 @@ name: 🏷️ Add labels
 
 jobs:
   label:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 🏷️ Apply labels
-        uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+    uses: wayofdev/gh-actions/.github/workflows/apply-labels.yml@master
+    with:
+      os: ubuntu-latest
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
 
 ...
