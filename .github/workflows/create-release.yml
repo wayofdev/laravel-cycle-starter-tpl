@@ -1,5 +1,6 @@
 ---
 
+# https://github.com/wayofdev/gh-actions/blob/master/.github/workflows/create-release.yml
 # https://github.com/google-github-actions/release-please-action#release-types-supported
 
 on:  # yamllint disable-line rule:truthy
