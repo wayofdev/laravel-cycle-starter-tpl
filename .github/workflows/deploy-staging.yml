@@ -17,7 +17,7 @@ jobs:
         php: ["8.1"]
     environment:
       name: staging
-      url: https://staging.laravel-starter-tpl.wayof.dev
+      url: https://staging.laravel-cycle-starter-tpl.wayof.dev
 
     steps:
       - name: 📦 Check out the codebase
@@ -54,11 +54,11 @@ jobs:
         env:
           DEPLOYER_STAGING_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_STAGING_SLACK_WEBHOOK }}
           DEPLOYER_STAGING_REMOTE_USER: ${{ secrets.DEPLOYER_STAGING_REMOTE_USER }}
-          DEPLOYER_STAGING_HOST: "staging.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_STAGING_HOST: "staging.laravel-cycle-starter-tpl.wayof.dev"
           DEPLOYER_STAGING_BRANCH: "develop"
           DEPLOYER_PROD_SLACK_WEBHOOK: ${{ secrets.DEPLOYER_PROD_SLACK_WEBHOOK }}
           DEPLOYER_PROD_REMOTE_USER: ${{ secrets.DEPLOYER_PROD_REMOTE_USER }}
-          DEPLOYER_PROD_HOST: "prod.laravel-starter-tpl.wayof.dev"
+          DEPLOYER_PROD_HOST: "prod.laravel-cycle-starter-tpl.wayof.dev"
           DEPLOYER_PROD_BRANCH: "master"
 
 ...

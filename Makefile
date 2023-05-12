@@ -24,7 +24,7 @@ BUILDER_PARAMS ?= docker run --rm -i \
 	--env COMPOSER_AUTH="$(COMPOSER_AUTH)"
 
 BUILDER ?= $(BUILDER_PARAMS) $(SUPPORT_IMAGE)
-BUILDER_WIRED ?= $(BUILDER_PARAMS) --network $(COMPOSE_PROJECT_NAME)_default $(SUPPORT_IMAGE)
+BUILDER_WIRED ?= $(BUILDER_PARAMS) --network project.$(COMPOSE_PROJECT_NAME) $(SUPPORT_IMAGE)
 
 # Shorthand wait4x command, executed through build-deps
 WAITER ?= $(BUILDER_WIRED) wait4x
@@ -63,7 +63,7 @@ else
 	WHITE := ""
 	RST := ""
 endif
-MAKE_LOGFILE = /tmp/laravel-starter-tpl.log
+MAKE_LOGFILE = /tmp/laravel-cycle-starter-tpl.log
 MAKE_CMD_COLOR := $(BLUE)
 
 default: all
@@ -78,7 +78,7 @@ help: ## Show this menu
 	@echo
 	@echo '    📑 Logs are stored in      $(MAKE_LOGFILE)'
 	@echo
-	@echo '    📦 Package                 laravel-starter-tpl (github.com/wayofdev/laravel-starter-tpl)'
+	@echo '    📦 Package                 laravel-cycle-starter-tpl (github.com/wayofdev/laravel-cycle-starter-tpl)'
 	@echo '    🤠 Author                  Andrij Orlenko (github.com/lotyp)'
 	@echo '    🏢 ${YELLOW}Org                     wayofdev (github.com/wayofdev)${RST}'
 .PHONY: help
@@ -88,7 +88,7 @@ help: ## Show this menu
 # Default action
 # Defines default command when `make` is executed without additional parameters
 # ------------------------------------------------------------------------------------
-all: hooks key prepare up
+all: hooks install key prepare up
 .PHONY: all
 
 

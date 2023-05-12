@@ -1,8 +1,8 @@
 <br>
 
 <div align="center">
-<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/assets/logo.gh-light-mode-only.png#gh-light-mode-only">
-<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-starter-tpl/master/assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-cycle-starter-tpl/master/assets/logo.gh-light-mode-only.png#gh-light-mode-only">
+<img width="456" src="https://raw.githubusercontent.com/wayofdev/laravel-cycle-starter-tpl/master/assets/logo.gh-dark-mode-only.png#gh-dark-mode-only">
 </div>
 
 <br>
@@ -10,12 +10,12 @@
 <br>
 
 <div align="center">
-<a href="https://actions-badge.atrox.dev/wayofdev/laravel-starter-tpl/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Fnext-starter-tpl%2Fbadge&style=flat-square"/></a>
-<a href="https://github.com/wayofdev/laravel-starter-tpl/tags"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/wayofdev/laravel-starter-tpl?style=flat-square"></a>
-<a href="LICENSE.md"><img src="https://img.shields.io/github/license/wayofdev/laravel-starter-tpl.svg?style=flat-square&color=blue" alt="Software License"/></a>
-<a href="#"><img alt="Commits since latest release" src="https://img.shields.io/github/commits-since/wayofdev/laravel-starter-tpl/latest?style=flat-square"></a>
-<a href="https://app.codecov.io/gh/wayofdev/laravel-starter-tpl">
-<img alt="Codecov" src="https://img.shields.io/codecov/c/gh/wayofdev/laravel-starter-tpl?style=flat-square"></a>
+<a href="https://actions-badge.atrox.dev/wayofdev/laravel-cycle-starter-tpl/goto"><img alt="Build Status" src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fwayofdev%2Flaravel-cycle-starter-tpl%2Fbadge&style=flat-square"/></a>
+<a href="https://github.com/wayofdev/laravel-cycle-starter-tpl/tags"><img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/wayofdev/laravel-cycle-starter-tpl?style=flat-square"></a>
+<a href="LICENSE.md"><img src="https://img.shields.io/github/license/wayofdev/laravel-cycle-starter-tpl.svg?style=flat-square&color=blue" alt="Software License"/></a>
+<a href="#"><img alt="Commits since latest release" src="https://img.shields.io/github/commits-since/wayofdev/laravel-cycle-starter-tpl/latest?style=flat-square"></a>
+<a href="https://app.codecov.io/gh/wayofdev/laravel-cycle-starter-tpl">
+<img alt="Codecov" src="https://img.shields.io/codecov/c/gh/wayofdev/laravel-cycle-starter-tpl?style=flat-square"></a>
 </div>
 
 <br>
@@ -86,10 +86,10 @@ To use this repository, you need to meet the following requirements:
 
 1. **Clone** repository:
 
-   After forking or creating generating repository from template, you can clone it to your local machine. In this example we will use `laravel-starter-tpl` repository as starting point.
+   After forking or creating generating repository from template, you can clone it to your local machine. In this example we will use `laravel-cycle-starter-tpl` repository as starting point.
 
    ```bash
-   $ git clone git@github.com:wayofdev/laravel-starter-tpl.git
+   $ git clone git@github.com:wayofdev/laravel-cycle-starter-tpl.git
    ```
 
 2. **Generate** `.env` file
@@ -101,7 +101,7 @@ To use this repository, you need to meet the following requirements:
        APP_NAME=laravel \
        SHARED_SERVICES_NAMESPACE=ss \
        PROJECT_SERVICES_NAMESPACE=wod \
-       COMPOSE_PROJECT_NAME=laravel-starter-tpl
+       COMPOSE_PROJECT_NAME=laravel-cycle-starter-tpl
    ```
 
    **Change** generated `.env` file to match your needs, if needed.
@@ -113,7 +113,7 @@ To use this repository, you need to meet the following requirements:
        APP_NAME=laravel \
        SHARED_SERVICES_NAMESPACE=ss \
        PROJECT_SERVICES_NAMESPACE=wod \
-       COMPOSE_PROJECT_NAME=laravel-starter-tpl \
+       COMPOSE_PROJECT_NAME=laravel-cycle-starter-tpl \
        FORCE=true
    ```
 
@@ -122,8 +122,9 @@ To use this repository, you need to meet the following requirements:
    ```bash
    $ make
 
-   # or run commands separatley
+   # or run commands separately
    $ make hooks
+   $ make install
    $ make key
    $ make prepare
    $ make up
@@ -133,7 +134,7 @@ To use this repository, you need to meet the following requirements:
 
 ## 🤝 License
 
-[![Licence](https://img.shields.io/github/license/wayofdev/laravel-starter-tpl?style=for-the-badge&color=blue)](./LICENSE)
+[![Licence](https://img.shields.io/github/license/wayofdev/laravel-cycle-starter-tpl?style=for-the-badge&color=blue)](./LICENSE)
 
 <br>
 
