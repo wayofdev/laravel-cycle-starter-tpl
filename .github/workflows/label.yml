@@ -15,6 +15,7 @@ jobs:
     uses: wayofdev/gh-actions/.github/workflows/apply-labels.yml@master
     with:
       os: ubuntu-latest
+    secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
 
 ...
