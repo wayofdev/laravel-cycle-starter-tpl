@@ -61,7 +61,7 @@ jobs:
           APP_NAME: laravel
           SHARED_SERVICES_NAMESPACE: ss
           PROJECT_SERVICES_NAMESPACE: wod
-          COMPOSE_PROJECT_NAME: laravel-starter-tpl
+          COMPOSE_PROJECT_NAME: laravel-cycle-starter-tpl
 
       - name: 🔑 Generate secret application key
         run: php artisan key:generate
