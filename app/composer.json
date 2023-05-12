@@ -11,7 +11,8 @@
         "laravel/framework": "^10.8",
         "laravel/tinker": "^2.8",
         "sentry/sentry-laravel": "^3.3",
-        "deployer/deployer": "^7.3"
+        "deployer/deployer": "^7.3",
+        "wayofdev/laravel-cycle-orm-adapter": "*"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.31",
