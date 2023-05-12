@@ -1,18 +1,13 @@
----
 # This workflow was added by CodeSee. Learn more at https://codesee.io/
 # This is v2.0 of this workflow file
-
-on: # yamllint disable-line rule:truthy
+on:
   push:
     branches:
       - develop
   pull_request_target:
-    types:
-      - opened
-      - synchronize
-      - reopened
+    types: [opened, synchronize, reopened]
 
-name: 🤖 CodeSee
+name: CodeSee
 
 permissions: read-all
 
@@ -20,8 +15,9 @@ jobs:
   codesee:
     runs-on: ubuntu-latest
     continue-on-error: true
+    name: Analyze the repo with CodeSee
     steps:
-      - name: 💻 Analyze the repo with CodeSee
-        uses: Codesee-io/codesee-action@v2
+      - uses: Codesee-io/codesee-action@v2
         with:
           codesee-token: ${{ secrets.CODESEE_ARCH_DIAG_API_TOKEN }}
+          codesee-url: https://app.codesee.io
