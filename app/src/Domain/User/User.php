@@ -20,9 +20,6 @@ use Illuminate\Support\Collection;
 )]
 final class User
 {
-    #[Column(type: 'bigInteger', primary: true)]
-    private ?int $incrementalId = null;
-
     #[Column(type: 'string', nullable: true)]
     public ?string $email = null;
 
@@ -31,6 +28,8 @@ final class User
 
     #[HasMany(target: Role::class)]
     public Collection $roles;
+    #[Column(type: 'bigInteger', primary: true)]
+    private ?int $incrementalId = null;
 
     public function __construct(
         #[Column(type: 'string')]
