@@ -22,13 +22,17 @@
 
 # Laravel Starter Template
 
-This is an **opinionated** modified version of the Laravel framework which aims at providing a Domain-Driven Design (DDD) structure.
+This is an **opinionated** modified version of the Laravel framework which aims at providing a Domain-Driven Design (DDD) structure and using [CycleORM](https://cycle-orm.dev) instead of Eloquent.
 
 ## 📄 About
 
-Laravel is a popular PHP web framework that provides an easy and efficient way to build web applications. However, the default structure of Laravel, coupled with Eloquent's active record pattern, may not always fit the needs of a project that requires a Domain-Driven Design (DDD) architecture. Eloquent's active record pattern breaks DDD principles and make it difficult to separate your business logic from your infrastructure code.
+Laravel is a popular PHP web framework known for its simplicity, elegance and the Active Record ORM - Eloquent. Despite its popularity and convenience, Eloquent often comes in the way of projects that require a Domain-Driven Design (DDD) structure. This is due to Eloquent's active record pattern, which in practice can cause the violation of DDD principles, most notably the separation of the business logic from infrastructure code.
 
-This repository provides a modified file structure for Laravel that follows DDD principles and tries to adhere to best practices, such as those outlined in Spatie's Laravel Beyond CRUD. The goal is to provide a starting point for building Laravel applications using a DDD approach, while still leveraging the power and convenience of the Laravel framework.
+Understanding this challenge, we've introduced CycleORM in place of Eloquent in this starter template. CycleORM offers a DataMapper pattern which is a better fit for DDD as it helps to maintain a clear boundary between your business logic and database. This approach ensures that your domain rules and business logic can be modelled according to your needs, and not around the constraints of the active record pattern.
+
+This repository provides a modified file structure for Laravel that follows DDD principles and tries to adhere to best practices, such as those outlined in Spatie's Laravel Beyond CRUD.
+
+Our goal is to provide a starting point for building Laravel applications using a DDD approach with CycleORM, while still leveraging the power and convenience of the Laravel framework.
 
 <br>
 
@@ -38,7 +42,7 @@ This repository provides a modified file structure for Laravel that follows DDD 
 
 ## 🚀 Features
 
-This starter template includes several added, changed, and removed features:
+This starter template inherits the following features from its upstream template [wayofdev/laravel-starter-tpl](https://github.com/wayofdev/laravel-starter-tpl):
 
 * **Added:**
   * Strict types declaration in all PHP files
@@ -65,6 +69,15 @@ This starter template includes several added, changed, and removed features:
   * Broadcasting service provider and it's routes. It can be added back, if it will be required for project
   * Console routes in favor of Command classes.
   * Sanctum migration files
+
+Following the inherited features, this starter template also introduces a set of additional modifications from the upstream template, [wayofdev/laravel-starter-tpl](https://github.com/wayofdev/laravel-starter-tpl):
+
+* **Added:**
+  * CycleORM support via [wayofdev/laravel-cycle-orm-adapter](https://github.com/wayofdev/laravel-cycle-orm-adapter) - This introduces the DataMapper pattern, which is more compatible with DDD principles, replacing Laravel's default Eloquent ORM which uses the Active Record pattern.
+* **Changed:**
+  * Deployer script uses custom task to run Cycle ORM migrations instead of Eloquent migrations
+* **Removed:**
+  * Default Laravel Eloquent migrations - As we're using CycleORM, the default Eloquent migrations are no longer necessary and have been removed to prevent conflicts.
 
 <br>
 
