@@ -44,6 +44,11 @@ host('prod')
 
 before('deploy', 'slack:notify');
 
+task('artisan:cycle:migrate', function () {
+    cd('{{release_or_current_path}}');
+    run('php artisan cycle:migrate');
+});
+
 task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
@@ -52,7 +57,7 @@ task('deploy', [
     'artisan:route:cache',
     'artisan:view:cache',
     'artisan:event:cache',
-    'artisan:migrate',
+    'artisan:cycle:migrate',
     'deploy:publish',
 ]);
 
