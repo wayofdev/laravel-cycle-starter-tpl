@@ -52,14 +52,9 @@ return [
      */
     'providers' => [
         'users' => [
-            'driver' => 'eloquent',
-            'model' => \Domain\User\Models\User::class,
+            'driver' => 'database',
+            'table' => 'users',
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

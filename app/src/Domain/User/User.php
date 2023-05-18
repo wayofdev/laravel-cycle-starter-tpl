@@ -38,7 +38,12 @@ final class User
         $this->roles = new Collection();
     }
 
-    public function getName(): string
+    public function incrementalId(): ?int
+    {
+        return $this->incrementalId;
+    }
+
+    public function name(): string
     {
         return $this->name;
     }
