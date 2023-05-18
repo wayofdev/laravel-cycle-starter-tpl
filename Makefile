@@ -124,7 +124,7 @@ prepare:
 # ------------------------------------------------------------------------------------
 up: # Creates and starts containers, defined in docker-compose and override file
 	$(DOCKER_COMPOSE) up --remove-orphans -d
-	$(DOCKER_COMPOSE) exec app wait4x tcp database:5432 -t 1m
+	$(DOCKER_COMPOSE) exec app wait4x postgresql 'postgres://${DB_USERNAME}:${DB_PASSWORD}@database:5432/${DB_DATABASE}?sslmode=disable' -t 1m
 .PHONY: up
 
 down: # Stops and removes containers of this project
