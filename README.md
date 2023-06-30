@@ -20,7 +20,7 @@
 
 <br>
 
-# Laravel Starter Template
+# Laravel Cycle ORM Starter Template
 
 This is an **opinionated** modified version of the Laravel framework which aims at providing a Domain-Driven Design (DDD) structure and using [CycleORM](https://cycle-orm.dev) instead of Eloquent.
 
@@ -157,12 +157,13 @@ Useful resources about Laravel and DDD approach:
 
 * [Laravel Beyond CRUD](https://spatie.be/products/laravel-beyond-crud)
 * [Laravel Skeleton](https://romanzipp.github.io/Laravel-Skeleton/) by [romanzipp](https://github.com/romanzipp)
+* [Using Deptrac to maintain code quality](https://getparthenon.com/blog/using-deptrac-to-maintain-code-quality/)
 
 <br>
 
 ## 🙆🏼‍♂️ Author Information
 
-This repository was created in **2022** by [lotyp / wayofdev](https://github.com/wayofdev).
+This repository was created in **2023** by [lotyp / wayofdev](https://github.com/wayofdev).
 
 <br>
 
@@ -175,5 +176,93 @@ We are open to all kinds of contributions. If you want to:
 - 🐛 Report an issue
 - 📖 Improve documentation
 - 👨‍💻 Contribute to the code
+
+<br>
+
+## 🧰 Project Architecture
+
+This project uses Domain-Driven Design (DDD) principles and is structured into four main layers: Domain, Application, Bridge, and Infrastructure. Each layer has specific responsibilities and dependencies, as described below.
+
+### → Layers
+
+* **Domain:**
+
+  The Domain layer is the core of our business software, and it encapsulates the business rules. This involves entities, value objects, aggregates, events, and domain services.
+
+  <ins>The Domain layer does not depend on any other layer</ins>, thereby preserving the integrity and independence of the business logic.
+
+* **Application:**
+
+  The Application layer orchestrates the coordination of domain objects to perform specific use cases of our application. This includes things like application services and command/query handlers.
+
+  This layer depends on the Domain layer for business rules and the Infrastructure layer for technical capabilities.
+
+* **Bridge:**
+
+  The Bridge layer is the adapter that allows our application to interact with the outside world. It uses Laravel to route HTTP requests or console commands to the corresponding Application layer use case.
+
+  This layer depends on the Application layer, Domain layer, and Infrastructure layer. It uses the Application layer to orchestrate operations, the Domain layer for domain knowledge, and the Infrastructure layer for technical capabilities.
+
+* **Infrastructure:**
+
+  The Infrastructure layer provides generic technical capabilities to support the higher layers. This includes things like database access, file system access, and other technical concerns.
+
+  This layer can depend on the Domain layer, meaning it can use domain entities, value objects, or services when implementing its technical concerns.
+
+For more information check [deptrac.yaml](https://github.com/wayofdev/laravel-cycle-starter-tpl/blob/develop/app/deptrac.yaml) located in repository `app` folder.
+
+### → Architecture Rules
+
+These layer dependencies are enforced using the Deptrac tool, which checks the codebase for violations of our architecture rules. The rules are defined in the [deptrac.yaml](https://github.com/wayofdev/laravel-cycle-starter-tpl/blob/develop/app/deptrac.yaml) file and specify that:
+
+- The **Domain** layer **does not** depend on any other layer.
+- The **Application** layer **depends** on the **Domain** and **Infrastructure** layers.
+- The **Bridge** layer depends on the **Domain**, **Application**, and **Infrastructure** layers.
+- The **Infrastructure** layer depends on the **Domain** layer.
+
+By adhering to these rules, we can ensure a clean separation of concerns in our application, with the business logic (Domain) kept separate from use case orchestration (Application), communication with the outside world (Bridge), and technical concerns (Infrastructure).
+
+### → Dependency Tracking using Deptrac
+
+We use Deptrac to enforce a clean architecture within our codebase. Deptrac helps us adhere to the principles of layered architecture by defining and checking rules that describe which parts of our code can depend on others.
+
+Deptrac operates on the level of PHP classes, analyzing the dependencies between them and comparing them to the architecture rules defined in [deptrac.yaml](https://github.com/wayofdev/laravel-cycle-starter-tpl/blob/develop/app/deptrac.yaml). If a class has a dependency that violates these rules, Deptrac will alert us.
+
+Using Deptrac allows us to ensure a clean separation of concerns in our codebase, making it easier to understand, test, and maintain.
+
+* To generate images from deptrac dependency `graphviz` needs to be installed on your system:
+
+  ```bash
+  $ brew install graphviz
+  ```
+
+* Running deptrac
+
+  To run Deptrac and check for violations of our architecture rules, you can use one of the following commands:
+
+  ```bash
+  $ make lint-deps
+  ```
+
+  or navigate to the repository's app directory and execute:
+
+  ```bash
+  $ cd app
+  $ composer deptrac
+  ```
+
+  This will run Deptrac and report any violations in the console output.
+
+  To create a visual graph of our dependencies, you can run:
+
+  ```bash
+  $ composer deptrac:gv
+  ```
+
+  This command will generate an image in the `assets` directory.
+
+### → Architecture Diagram
+
+![Architecture Diagram](assets/deptrac.svg)
 
 <br>

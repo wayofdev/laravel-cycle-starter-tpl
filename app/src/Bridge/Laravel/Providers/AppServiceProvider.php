@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Laravel\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Lcobucci\Clock\Clock;
+use Lcobucci\Clock\SystemClock;
 
 final class AppServiceProvider extends ServiceProvider
 {
@@ -13,6 +15,9 @@ final class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(Clock::class, static function (): SystemClock {
+            return SystemClock::fromSystemTimezone();
+        });
     }
 
     /**

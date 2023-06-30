@@ -1,0 +1,66 @@
+deptrac:
+  paths:
+    - src/
+    - database/
+    - tests/
+
+  exclude_files:
+    - '#.*test.*#'
+
+  layers:
+    - name: Domain
+      collectors:
+        - type: directory
+          regex: src/Domain/.*
+
+    - name: Application
+      collectors:
+        - type: directory
+          regex: src/Application/.*
+
+    - name: Bridge
+      collectors:
+        - type: directory
+          regex: src/Bridge/.*
+
+    - name: Infrastructure
+      collectors:
+        - type: directory
+          regex: src/Infrastructure/.*
+
+    - name: DatabaseSeeders
+      collectors:
+        - type: directory
+          regex: database/seeders/.*
+
+    - name: DatabaseFactories
+      collectors:
+        - type: directory
+          regex: database/factories/.*
+
+    - name: Tests
+      collectors:
+        - type: directory
+          regex: tests/.*
+
+  ruleset:
+    Domain: ~
+    Application:
+      - Domain
+    Bridge:
+      - Application
+      - Domain
+      - Infrastructure
+    Infrastructure:
+      - Domain
+    DatabaseSeeders:
+      - DatabaseFactories
+    DatabaseFactories:
+      - Domain
+    Tests:
+      - Domain
+      - Application
+      - Bridge
+      - Infrastructure
+      - DatabaseSeeders
+      - DatabaseFactories
