@@ -178,6 +178,10 @@ lint-stan:
 	$(APP_COMPOSER) run-script stan
 .PHONY: lint-stan
 
+lint-deps:
+	$(APP_COMPOSER) run-script deptrac
+.PHONY: lint-deps
+
 test: ## Run project php-unit and pest tests
 	$(APP_COMPOSER) test
 .PHONY: test
@@ -185,6 +189,14 @@ test: ## Run project php-unit and pest tests
 test-cc: ## Run project php-unit and pest tests in coverage mode and build report
 	$(APP_COMPOSER) test:cc
 .PHONY: test-cc
+
+api-docs-public: ## Generate openapi docs specification file for public api
+	$(APP_EXEC) php artisan open-docs:generate public
+.PHONY: api-docs-public
+
+api-docs-admin: ## Generate openapi docs specification file for admin api
+	$(APP_EXEC) php artisan open-docs:generate admin
+.PHONY: api-docs-admin
 
 
 # Composer Commands
@@ -197,9 +209,36 @@ update: ## Update composer dependencies
 	$(APP_COMPOSER) update $(package)
 .PHONY: update
 
+du: ## Dump composer autoload
+	$(APP_COMPOSER) dump-autoload
+.PHONY: du
+
 show: ## Shows information about installed composer packages
 	$(APP_COMPOSER) show
 .PHONY: show
+
+
+# Database Commands
+# ------------------------------------------------------------------------------------
+db-wipe: ## Wipe database
+	$(APP_EXEC) php artisan db:wipe
+.PHONY: db-wipe
+
+db-refresh: ## Delete migration files, wipe database, create new migrations, run them and seed database
+	rm ./app/database/migrations/cycle/* || true
+	$(APP_EXEC) php artisan cache:clear
+	$(APP_EXEC) php artisan db:wipe
+	$(APP_EXEC) php artisan cycle:orm:migrate
+	$(APP_EXEC) php artisan cycle:migrate
+	$(APP_EXEC) php artisan db:seed -vvv
+.PHONY: db-refresh
+
+
+# Authentication Commands
+# ------------------------------------------------------------------------------------
+auth0-get: ## Install auth0 cli
+	$(APP_EXEC) curl -sSfL https://raw.githubusercontent.com/auth0/auth0-cli/main/install.sh | sh -s -- -b .
+.PHONY: auth0-get
 
 
 # Deployer Commands

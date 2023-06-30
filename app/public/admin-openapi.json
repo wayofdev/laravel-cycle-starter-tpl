@@ -1,0 +1,1026 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WOD Operations API",
+        "description": "WOD Operations Ecommerce API",
+        "contact": {
+            "name": "John Doe",
+            "email": "support@wayof.dev"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/admin/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Get list of categories.",
+                "description": "Get list of categories.",
+                "operationId": "f3673971d0f4ddb16b98f8d0b9a53a4d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Store new product",
+                "description": "This endpoint stores new product into database storage.",
+                "operationId": "b9215817b901d3496022eef065a49b7e",
+                "requestBody": {
+                    "description": "Product data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreCategoryDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewCategoryDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/admin/categories/{category_id}": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Get single category.",
+                "description": "This endpoint returns a single category.",
+                "operationId": "f4e0721222c05878c6120897d60f9518",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewCategoryDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "categories"
+                ],
+                "summary": "Update category contents.",
+                "description": "This endpoint updates fields of category.",
+                "operationId": "7caf79913d8508be8fba19d9daadc57b",
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Category data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateCategoryDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewCategoryDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/admin/clients": {
+            "get": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Get list of clients.",
+                "description": "This endpoint returns a list of clients in private collection.",
+                "operationId": "8a31be582d33fceb7c432e1ae1820ef2",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/admin/clients/{client_id}": {
+            "get": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Get single client.",
+                "description": "This endpoint returns a single client.",
+                "operationId": "1b5ce09575df524e07604a38a8806a36",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewClientDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/admin/network": {
+            "get": {
+                "tags": [
+                    "network"
+                ],
+                "summary": "Network status.",
+                "description": "Get network status and requested by response.",
+                "operationId": "15dfc4a69d9b4fc5768179e34901c352",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/admin/orders": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "summary": "Get list of orders.",
+                "description": "This endpoint returns a list of orders in private collection.",
+                "operationId": "6c9329c781d3ccd8bffbf337cdf65fed",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/admin/orders/{order_id}": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "summary": "Get single order.",
+                "description": "This endpoint returns a single order.",
+                "operationId": "32fc90837d7679c263e6ce7c83dbaf7a",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewOrderDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/admin/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Get list of products.",
+                "description": "This endpoint returns a list of products in private collection.",
+                "operationId": "137414675086ac4ba5696a2eff046f4f",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Store new product",
+                "description": "This endpoint stores new product into database storage.",
+                "operationId": "52207caf8cfb2f922b8f731529d396e1",
+                "requestBody": {
+                    "description": "Product data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreProductDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewProductDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/admin/products/{product_id}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Get single product.",
+                "description": "This endpoint returns a single product.",
+                "operationId": "21c497082e6c82c6ec1067ff53819243",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewProductDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Update category contents.",
+                "description": "This endpoint updates fields of category.",
+                "operationId": "8c3c094bf07ec4186f7c651abd646fe6",
+                "parameters": [
+                    {
+                        "name": "product_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Product data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateProductDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ViewProductDto"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "FootprintDto": {
+                "title": "Footprint",
+                "description": "Footprint data.",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "party": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "user"
+                    },
+                    "realm": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "front-office"
+                    }
+                },
+                "type": "object"
+            },
+            "SignatureDto": {
+                "title": "Signature",
+                "description": "Signature data.",
+                "properties": {
+                    "at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "nullable": true
+                    },
+                    "by": {
+                        "schema": "Application\\Auth\\Dto\\FootprintDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/FootprintDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "StoreCartDto": {
+                "title": "Cart",
+                "description": "Cart data for storing new category."
+            },
+            "ViewCartDto": {
+                "title": "Cart",
+                "description": "Cart response data.",
+                "properties": {
+                    "incrementalId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "created": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "updated": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "deleted": {
+                        "schema": "Application\\Auth\\Dto\\SignatureDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SignatureDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "StoreCategoryDto": {
+                "title": "Category",
+                "description": "Category data for storing new category.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the product.",
+                        "type": "string",
+                        "example": "Awesome Jacket"
+                    },
+                    "gender": {
+                        "description": "Gender of the category.",
+                        "type": "string",
+                        "example": "male"
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateCategoryDto": {
+                "title": "Category",
+                "description": "Category data for updating category.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the product.",
+                        "type": "string",
+                        "example": "Awesome Jacket",
+                        "nullable": true
+                    },
+                    "gender": {
+                        "description": "Gender of the category.",
+                        "type": "string",
+                        "example": "male"
+                    }
+                },
+                "type": "object"
+            },
+            "ViewCategoryDto": {
+                "title": "Category",
+                "description": "Category response data.",
+                "properties": {
+                    "incrementalId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Men Jackets"
+                    },
+                    "gender": {
+                        "description": "Gender of the category.",
+                        "type": "string",
+                        "example": "male"
+                    },
+                    "created": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "updated": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "deleted": {
+                        "schema": "Application\\Auth\\Dto\\SignatureDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SignatureDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ViewClientDto": {
+                "title": "Client",
+                "description": "Client response data.",
+                "properties": {
+                    "incrementalId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "nullable": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "john.doe@example.com",
+                        "nullable": true
+                    },
+                    "username": {
+                        "type": "string",
+                        "example": "john-doe",
+                        "nullable": true
+                    },
+                    "firstName": {
+                        "type": "string",
+                        "example": "John",
+                        "nullable": true
+                    },
+                    "lastName": {
+                        "type": "string",
+                        "example": "Doe",
+                        "nullable": true
+                    },
+                    "company": {
+                        "type": "string",
+                        "example": "Big Fat Company LLC",
+                        "nullable": true
+                    },
+                    "created": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "updated": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "deleted": {
+                        "schema": "Application\\Auth\\Dto\\SignatureDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SignatureDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ViewIsoDto": {
+                "title": "ISO 3166-1 country codes",
+                "description": "This schema contains ISO 3166-1 country codes.",
+                "properties": {
+                    "alpha2": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "LV",
+                        "nullable": true
+                    },
+                    "alpha3": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "LVA",
+                        "nullable": true
+                    },
+                    "numeric": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "428",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "ViewStateDto": {
+                "title": "Country state",
+                "description": "This schema contains country state.",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "integer",
+                        "example": 1
+                    },
+                    "code": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "TX"
+                    },
+                    "name": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "Texas"
+                    }
+                },
+                "type": "object"
+            },
+            "ViewCountryDto": {
+                "title": "Country",
+                "description": "Country response data.",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "lv"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Latvia"
+                    },
+                    "emoji": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "🇱🇻"
+                    },
+                    "code": {
+                        "$ref": "#/components/schemas/ViewIsoDto"
+                    }
+                },
+                "type": "object"
+            },
+            "ViewOrderDto": {
+                "title": "Order",
+                "description": "Order response data.",
+                "properties": {
+                    "incrementalId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "created": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "updated": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "deleted": {
+                        "schema": "Application\\Auth\\Dto\\SignatureDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SignatureDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "StoreCategoryToProductDto": {
+                "title": "Category",
+                "description": "Category data.",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "10ab5df0-693a-4cd8-8ed5-1e702947d4d0"
+                    }
+                },
+                "type": "object"
+            },
+            "StoreCodeDto": {
+                "title": "Code",
+                "description": "Code data.",
+                "properties": {
+                    "sku": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "AWSP123",
+                        "nullable": true
+                    },
+                    "ian": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "5901234123457",
+                        "nullable": true
+                    },
+                    "upc": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "012345678905",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateCodeDto": {
+                "title": "Code",
+                "description": "Code data.",
+                "properties": {
+                    "sku": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "AWSP123",
+                        "nullable": true
+                    },
+                    "ian": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "5901234123457",
+                        "nullable": true
+                    },
+                    "upc": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "012345678905",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "ViewCodeDto": {
+                "title": "Code",
+                "description": "Code data.",
+                "properties": {
+                    "sku": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "AWSP123",
+                        "nullable": true
+                    },
+                    "ian": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "5901234123457",
+                        "nullable": true
+                    },
+                    "upc": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "012345678905",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "StoreSeoDto": {
+                "title": "Seo",
+                "description": "Seo data.",
+                "properties": {
+                    "slug": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "awesome-jacket",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "Awesome Jacket",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "This is an awesome jacket",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateSeoDto": {
+                "title": "Seo",
+                "description": "Seo data.",
+                "properties": {
+                    "slug": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "awesome-jacket",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "Awesome Jacket",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "This is an awesome jacket",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "ViewSeoDto": {
+                "title": "Seo",
+                "description": "Seo data.",
+                "properties": {
+                    "slug": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "awesome-jacket",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "Awesome Jacket",
+                        "nullable": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "format": "string",
+                        "example": "This is an awesome jacket",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "StoreProductDto": {
+                "title": "Product",
+                "description": "Product data for storing a new product.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the product.",
+                        "type": "string",
+                        "example": "Awesome Jacket"
+                    },
+                    "status": {
+                        "description": "Is product enabled and shown on site?",
+                        "example": "true"
+                    },
+                    "description": {
+                        "description": "Description of the product.",
+                        "type": "string",
+                        "example": "This is an awesome jacket"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/StoreCategoryToProductDto"
+                    },
+                    "code": {
+                        "$ref": "#/components/schemas/StoreCodeDto"
+                    },
+                    "seo": {
+                        "schema": "Application\\Product\\Dto\\Seo\\StoreSeoDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/StoreSeoDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "UpdateProductDto": {
+                "title": "Product",
+                "description": "Product data for storing a new product.",
+                "properties": {
+                    "name": {
+                        "description": "Name of the product.",
+                        "type": "string",
+                        "example": "Awesome Jacket",
+                        "nullable": true
+                    },
+                    "status": {
+                        "description": "Is product enabled and shown on site?",
+                        "example": "true",
+                        "nullable": true
+                    },
+                    "description": {
+                        "description": "Description of the product.",
+                        "type": "string",
+                        "example": "This is an awesome jacket",
+                        "nullable": true
+                    },
+                    "code": {
+                        "schema": "Application\\Product\\Dto\\Code\\UpdateCodeDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateCodeDto"
+                            }
+                        ]
+                    },
+                    "seo": {
+                        "schema": "Application\\Product\\Dto\\Seo\\UpdateSeoDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/UpdateSeoDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "ViewProductDto": {
+                "title": "Product",
+                "description": "Product response data.",
+                "properties": {
+                    "incrementalId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "description": "Name of the product.",
+                        "type": "string",
+                        "example": "Awesome Jacket"
+                    },
+                    "status": {
+                        "description": "Is product enabled and shown on site?",
+                        "example": "true"
+                    },
+                    "description": {
+                        "description": "Description of the product.",
+                        "type": "string",
+                        "example": "This is an awesome jacket"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/ViewCategoryDto"
+                    },
+                    "code": {
+                        "$ref": "#/components/schemas/ViewCodeDto"
+                    },
+                    "seo": {
+                        "$ref": "#/components/schemas/ViewSeoDto"
+                    },
+                    "created": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "updated": {
+                        "$ref": "#/components/schemas/SignatureDto"
+                    },
+                    "deleted": {
+                        "schema": "Application\\Auth\\Dto\\SignatureDto",
+                        "nullable": true,
+                        "oneOf": [
+                            {
+                                "$ref": "#/components/schemas/SignatureDto"
+                            }
+                        ]
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

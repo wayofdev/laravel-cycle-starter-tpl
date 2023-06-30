@@ -11,8 +11,7 @@ return [
      * as required, but they're a perfect start for most applications.
      */
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'api-public',
     ],
 
     /*
@@ -30,9 +29,15 @@ return [
      *
      */
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+        'api-admin' => [
+            'driver' => 'auth0.authorizer',
+            'provider' => 'auth0-provider',
+            'configuration' => 'api-admin',
+        ],
+        'api-public' => [
+            'driver' => 'auth0.authorizer',
+            'provider' => 'auth0-provider',
+            'configuration' => 'api-public',
         ],
     ],
 
@@ -51,9 +56,10 @@ return [
      *
      */
     'providers' => [
-        'users' => [
-            'driver' => 'database',
-            'table' => 'users',
+        'auth0-provider' => [
+            'driver' => 'auth0.provider',
+            'repository' => 'auth0.repository',
+            // 'repository' => \Infrastructure\Persistence\Auth0\ClientRepository::class,
         ],
     ],
 

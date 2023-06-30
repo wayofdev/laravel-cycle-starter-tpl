@@ -44,20 +44,41 @@ host('prod')
 
 before('deploy', 'slack:notify');
 
+task('artisan:db:wipe', function () {
+    cd('{{release_or_current_path}}');
+    run('php artisan db:wipe --force');
+});
+
 task('artisan:cycle:migrate', function () {
     cd('{{release_or_current_path}}');
-    run('php artisan cycle:migrate');
+    run('php artisan cycle:migrate --force');
 });
+
+/*
+ * This task is needed because of the following issue:
+ * When adding new entity to the project, the repository injector
+ * will not be able to find the entity role for the repository,
+ * because of existing cache.
+ */
+task('cache:clear', function () {
+    cd('{{current_path}}');
+    run('php artisan cache:clear');
+});
+
+before('deploy', 'cache:clear');
 
 task('deploy', [
     'deploy:prepare',
     'deploy:vendors',
     'artisan:storage:link',
+    'artisan:cache:clear',
     'artisan:config:cache',
     'artisan:route:cache',
     'artisan:view:cache',
     'artisan:event:cache',
+    'artisan:db:wipe',
     'artisan:cycle:migrate',
+    'artisan:db:seed',
     'deploy:publish',
 ]);
 

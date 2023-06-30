@@ -123,16 +123,26 @@ return [
      */
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
-         * Package Service Providers...
+         * Package Service Providers
          */
 
         /*
-         * Application Service Providers...
+         * Application Service Providers
          */
         \Laravel\Providers\AppServiceProvider::class,
         \Laravel\Providers\AuthServiceProvider::class,
         \Laravel\Providers\EventServiceProvider::class,
         \Laravel\Providers\RouteServiceProvider::class,
+
+        /*
+         * Domain Service Providers
+         */
+        \Laravel\Providers\Domain\CountryServiceProvider::class,
+        \Laravel\Providers\Domain\ClientServiceProvider::class,
+        \Laravel\Providers\Domain\CategoryServiceProvider::class,
+        \Laravel\Providers\Domain\ProductServiceProvider::class,
+        \Laravel\Providers\Domain\CartServiceProvider::class,
+        \Laravel\Providers\Domain\OrderServiceProvider::class,
     ])->toArray(),
 
     /*

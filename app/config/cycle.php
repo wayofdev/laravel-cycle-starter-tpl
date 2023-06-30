@@ -157,11 +157,10 @@ return [
          */
         'defaults' => [
             SchemaInterface::MAPPER => \Cycle\ORM\Mapper\Mapper::class,
-            SchemaInterface::REPOSITORY => \Cycle\ORM\Select\Repository::class,
+            SchemaInterface::REPOSITORY => \WayOfDev\RQL\Bridge\Cycle\Repository::class,
+            SchemaInterface::SOURCE => \Cycle\ORM\Select\Source::class,
             SchemaInterface::SCOPE => null,
-            SchemaInterface::TYPECAST_HANDLER => [
-                // \Cycle\ORM\Parser\Typecast::class,  \App\Infrastructure\CycleORM\Typecaster\UuidTypecast::class,
-            ],
+            SchemaInterface::TYPECAST_HANDLER => [],
         ],
 
         'collections' => [
@@ -229,10 +228,5 @@ return [
     /*
      * Custom relation types for entities
      */
-    'customRelations' => [
-        // \Cycle\ORM\Relation::EMBEDDED => [
-        //     \Cycle\ORM\Config\RelationConfig::LOADER => \Cycle\ORM\Select\Loader\EmbeddedLoader::class,
-        //     \Cycle\ORM\Config\RelationConfig::RELATION => \Cycle\ORM\Relation\Embedded::class,
-        // ],
-    ],
+    'customRelations' => [],
 ];
